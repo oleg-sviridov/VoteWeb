@@ -170,7 +170,7 @@ public partial class Vote : System.Web.UI.Page
             employee.Account = "BA000";
             employee.Name = "Сектоид Сектоидов";
             employee.Department = "Департамент ИТ";
-            employee.ImageUrl = "~/Images/from.jpg";
+            employee.ImageUrl = "~/Content/from.jpg";
         }
         else
         {
@@ -227,9 +227,9 @@ public partial class Vote : System.Web.UI.Page
         if (TEST_MODE)
         {
             employee.Account = "BA001";
-            employee.Name = "Мутон Мутонов";
+            employee.Name = "Harly Quinn";
             employee.Department = "Департамент Маркетинг";
-            employee.ImageUrl = "~/Images/to.png";
+            employee.ImageUrl = "~/Content/to.jpg";
         }
         else
         {

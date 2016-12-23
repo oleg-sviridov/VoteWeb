@@ -93,7 +93,7 @@
         <tr>
             <td class="auto-style2">&nbsp;</td>
             <td class="auto-style4">
-                <asp:Image runat="server" ImageUrl="~/Images/logo.png" />
+                <asp:Image runat="server" ImageUrl="~/Content/logo.png" />
             </td>
             <td>&nbsp;</td>
         </tr>
