@@ -5,7 +5,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+        <script type="text/javascript">
+            function getVoteCheckedRadio() {
+                var radioButtons = document.getElementsByName("RadioButtonListValues");                
+                for (var i = 0; i < radioButtons.length; i++) {
+                    if (radioButtons[i].checked) {
+                        switch(radioButtons[i].value) {
+                            case "TeamSpirit":
+                                document.getElementById('<%= LabelVoteDescription.ClientID %>').innerHTML = "Концентрация энергии и таланта на достижение общего успеха";
+                                break;
+                            case "Innovation":
+                                document.getElementById('<%= LabelVoteDescription.ClientID %>').innerHTML = "Новые идеи и вклад в изменение процессов";
+                                break;
+                            case "Commitment":
+                                document.getElementById('<%= LabelVoteDescription.ClientID %>').innerHTML = "Вовлечение и проявление внимание к другим людям";
+                                break;
+                            case "Responsibility":
+                                document.getElementById('<%= LabelVoteDescription.ClientID %>').innerHTML = "Решительные действия и соблюдения этики";
+                                break;
+                            default:
+                                document.getElementById('<%= LabelVoteDescription.ClientID %>').innerHTML = "";
+                        }                         
+                    }
+                }
+            }
+    </script>
+
     <style type="text/css">
+         .description { 
+            width: 200px; 
+            background: #fc0; 
+            padding: 5px; 
+            border: solid 1px black; 
+            float: left; 
+            position: relative; 
+            top: 0px; 
+            left: -70px;
+           }
+
         .auto-style1 {
             height: 23px;
         }
@@ -43,6 +80,9 @@
             height: 23px;
             width: 229px;
         }
+        #ValueDescription {
+            height: 54px;
+        }
     </style>
 
 </head>
@@ -53,7 +93,7 @@
         <tr>
             <td class="auto-style2">&nbsp;</td>
             <td class="auto-style4">
-                <asp:Image runat="server" ImageUrl="~/Content/logo.png" />
+                <asp:Image runat="server" ImageUrl="~/Images/logo.png" />
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -90,7 +130,7 @@
                             <asp:Image ID="ImageFromEmployee" ImageUrl="" runat="server" Height="114px" style="text-align: center" Width="118px" />
                         </td>
                         <td class="auto-style8">
-                            <asp:Image ID="ImageToEmployee" ImageUrl="" runat="server" Height="127px" Width="97px" />
+                            <asp:Image ID="ImageToEmployee" ImageUrl="" runat="server" Height="116px" Width="118px" />
                         </td>
                     </tr>
                     <tr>
@@ -100,22 +140,23 @@
                             &nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="auto-style6" colspan="2">
+                        <td class="auto-style6">
     
                             <asp:Panel ID="PanelValues" runat="server" style="text-align: center">
-                                <asp:RadioButtonList runat="server" AutoPostBack="False" Height="64px" RepeatColumns="2" style="text-align: left" Width="314px">
-                                    <asp:ListItem Value="v1">Командный дух</asp:ListItem>
-                                    <asp:ListItem Value="v2">Инновации</asp:ListItem>
-                                    <asp:ListItem Value="v3">Вовлечённость</asp:ListItem>
-                                    <asp:ListItem Value="v4">Ответственность</asp:ListItem>
+                                <asp:RadioButtonList runat="server" AutoPostBack="False" Height="64px" RepeatColumns="2" style="text-align: left" Width="314px" ID="RadioButtonListValues" OnClick="getVoteCheckedRadio()" >
+                                    <asp:ListItem Value="TeamSpirit">Командный дух</asp:ListItem>
+                                    <asp:ListItem Value="Innovation">Инновации</asp:ListItem>
+                                    <asp:ListItem Value="Commitment">Вовлечённость</asp:ListItem>
+                                    <asp:ListItem Value="Responsibility">Ответственность</asp:ListItem>
                                 </asp:RadioButtonList>
                             </asp:Panel>
-    
+                        </td>
+                        <td>                      
+                            <div class="description"><asp:Label ID="LabelVoteDescription" runat="server"></asp:Label></div>                        
                         </td>
                     </tr>
                     <tr>
-                        <td class="auto-style6" colspan="2">
-                          
+                        <td class="auto-style6" colspan="2">                         
                             <asp:TextBox ID="TextBoxComment" runat="server" MaxLength="1000" TextMode="MultiLine" Width="623px"></asp:TextBox>
                         </td>
                     </tr>
@@ -127,17 +168,12 @@
                    <tr>
                         <td class="auto-style6" colspan="2">
                            
-                            <asp:Button ID="ButtonVote" runat="server" Text="Vote" OnClick="ButtonVote_Click" Enabled="False" />
+                            <asp:Button ID="ButtonVote" runat="server" Text="Vote" OnClick="ButtonVote_Click" />
                         </td>
                     </tr>
                 </table>
             </td>
             <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="auto-style3"></td>
-            <td class="auto-style5"></td>
-            <td class="auto-style1"></td>
         </tr>
     </table>
     </div>
